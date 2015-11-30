@@ -3,27 +3,33 @@
 <!DOCTYPE struts-config PUBLIC
           "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
           "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
- 
+
 <struts-config>
-    <form-beans>
-        <form-bean name="LoginForm"
-            type="form.LoginForm" />
-    </form-beans>
- 
- 
-    <global-exceptions>
-    </global-exceptions>
-    <global-forwards></global-forwards>
- 
-    <action-mappings>
-        <action path="/login" name="LoginForm" validate="true" input="/index.jsp"
-            type="actions.LoginAction">
-            <forward name="success" path="/welcome.jsp" />
-            <forward name="failure" path="/index.jsp" />
-        </action>
-    </action-mappings>
- 
-     
-    <message-resources parameter="MessageResource"></message-resources>
-     
+	<form-beans>
+		<form-bean name="LoginForm" type="form.LoginForm" />
+		<form-bean name="SignUpForm" type="form.SignUpForm" />
+	</form-beans>
+
+	<global-exceptions>
+	</global-exceptions>
+	<global-forwards></global-forwards>
+
+	<action-mappings>
+		<action path="/login" name="LoginForm" validate="true" input="/login.jsp"
+			type="actions.LoginAction">
+			<forward name="successC" path="/select_table.jsp" />
+			<forward name="successK" path="/kitchen.jsp" />
+			<forward name="successR" path="/restAdmin.jsp" />
+			<forward name="failure" path="/login.jsp" />
+		</action>
+		<action path="/action" forward="/home.jsp" />
+		<action path="/signup" name="SignUpForm" validate="true"
+			input="/sign_up.jsp" type="actions.SignUpAction">
+			<forward name="success" path="/login.jsp" />
+			<forward name="failure" path="/sign_up.jsp" />
+		</action>
+	</action-mappings>
+
+	<message-resources parameter="MessageResource"></message-resources>
+
 </struts-config>

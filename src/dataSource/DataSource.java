@@ -1,7 +1,5 @@
 package dataSource;
 
-import java.beans.PropertyVetoException;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -9,14 +7,16 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.Logger;
 
 public class DataSource {
 
+	final static Logger logger = Logger.getLogger(DataSource.class);
 	private static DataSource datasource;
 	private BasicDataSource ds;
 	private static Properties prop = new Properties();
 
-	DataSource() throws IOException, SQLException, PropertyVetoException {
+	DataSource()  {
 		readProperties();
 		ds = new BasicDataSource();
 		ds.setDriverClassName(prop.getProperty("classname"));
@@ -28,10 +28,9 @@ public class DataSource {
 		ds.setMinIdle(Integer.parseInt(prop.getProperty("minidle")));
 		ds.setMaxIdle(Integer.parseInt(prop.getProperty("maxidle")));
 		ds.setMaxOpenPreparedStatements(Integer.parseInt(prop.getProperty("maxopenpreparedstmt")));
-
 	}
 
-	public static DataSource getInstance() throws IOException, SQLException, PropertyVetoException {
+	public static DataSource getInstance()  {
 		if (datasource == null) {
 			datasource = new DataSource();
 			return datasource;
@@ -44,19 +43,22 @@ public class DataSource {
 		return this.ds.getConnection();
 	}
 
-	private static void readProperties() {
+	private void readProperties() {
 		InputStream input = null;
 		try {
-			input = new FileInputStream("resource\\db.properties");
-			prop.load(input);
+			prop.load(getClass().getClassLoader().getResourceAsStream("db.properties"));
 		} catch (IOException ex) {
-			ex.printStackTrace();
+			logger.error("IOException :" + ex.getStackTrace());
+			logger.error("Message :" + ex.getMessage());
+			logger.info(ex);
 		} finally {
 			if (input != null) {
 				try {
 					input.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.error("IOException :" + e.getStackTrace());
+					logger.error("Message :" + e.getMessage());
+					logger.info(e);
 				}
 			}
 		}

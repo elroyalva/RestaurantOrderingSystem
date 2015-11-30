@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/classes" path="src">
+	<classpathentry kind="src" path="src">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="resource">
+	<classpathentry excluding="**" kind="src" path="resource">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -28,8 +28,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/commons-dbcp2-2.1.1.jar"/>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.23-bin.jar"/>
-	<classpathentry kind="lib" path="lib/commons-pool2-2.4.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

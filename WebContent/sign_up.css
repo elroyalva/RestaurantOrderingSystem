@@ -1,0 +1,64 @@
+body	/*for page content*/
+{
+	margin-top: 50px;	
+	vertical-align: center;
+	text-align: center;
+}
+
+h1	/*for page heading*/
+{
+	font-size: 50px;
+	font-family: century;	
+	color:#000000;
+	text-align: center;	
+}
+
+.container	/*for table*/
+{
+	max-width: 700px;
+	max-height: 2500px;
+	margin:auto;
+	background-color: #AE482D;
+}
+
+h2	/*for the table data*/
+{
+	font-size: 20px;
+	font-family: century;
+	color:black;
+	text-align: left;	
+}
+
+
+h3	/*for errors*/
+{
+	font-size: 20px;
+	font-family: century;
+	color:red;
+	text-align: center;	
+}
+
+/*for submit and reset buttons*/
+#submit
+{
+	height: 30px;
+	width: 100px;
+	border-radius: 20px;
+	background: #000000;
+	color: #FFFFFF;
+	font-family: century;
+	font-size: 18px;
+	text-align: center;
+}
+
+#reset
+{
+	height: 30px;
+	width: 100px;
+	border-radius: 20px;
+	background: #000000;
+	color: #FFFFFF;
+	font-family: century;
+	font-size: 18px;
+	text-align: center;
+}
