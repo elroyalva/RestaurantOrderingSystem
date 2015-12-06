@@ -5,29 +5,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>WinJS Demo</title>
+	<title>ROS</title>
 	<link href="css/ui-light.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
 	<%
         String message = (String)request.getSession().getAttribute("message");
+	Integer id = (Integer)request.getSession().getAttribute("rest_id");
+	Map<Integer, Set<Integer>> data = (Map<Integer, Set<Integer>>)getServletContext().getAttribute("table_data");
+	Set<Integer> freeTables = data.get(id);
+	Integer toDelete = null;
+	toDelete = Integer.parseInt(request.getParameter("number"));
+	freeTables.remove(toDelete);
 	%>
 	<script type="text/javascript">
 	var restoData = <%=message%>;	
+	var tableNo = <%=toDelete%>;
 	</script>
 	<script src="js/base.js"></script>
 	<script src="js/ui.js"></script>
 	<script src="js/new.js"></script>
 </head>
 <body>
-
-<%
-Integer id = (Integer)request.getSession().getAttribute("rest_id");
-Map<Integer, Set<Integer>> data = (Map<Integer, Set<Integer>>)getServletContext().getAttribute("table_data");
-Set<Integer> freeTables = data.get(id);
-Integer toDelete = null;
-toDelete = Integer.parseInt(request.getParameter("number"));
-freeTables.remove(toDelete);
-%>
 	<div id="app">
 	    <div class="splitView" data-win-control="WinJS.UI.SplitView">
 	        <!-- Pane area -->
@@ -43,8 +41,8 @@ freeTables.remove(toDelete);
 
 	            <div class="nav-commands">
 	                <div class="addrLink" data-win-control="WinJS.UI.SplitViewCommand" data-win-options="{ label: 'Address', icon: 'home'}"></div>
-	                <div data-win-control="WinJS.UI.SplitViewCommand" data-win-options="{ label: 'Favorite', icon: 'favorite'}"></div>
-	                <div data-win-control="WinJS.UI.SplitViewCommand" data-win-options="{ label: 'Settings', icon: 'settings'}"></div>
+	                <!-- <div data-win-control="WinJS.UI.SplitViewCommand" data-win-options="{ label: 'Favorite', icon: 'favorite'}"></div> -->
+	                <!-- <div data-win-control="WinJS.UI.SplitViewCommand" data-win-options="{ label: 'Settings', icon: 'settings'}"></div> -->
 	            </div>
 	        </div>
 
@@ -58,14 +56,18 @@ freeTables.remove(toDelete);
 	        
 	        <div class="contenttext">
 	        	<!-- Simple template for the ListView instantiation  -->
-				<div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+				<div class="smallListIconTextTemplate" data-win-control="WinJS.Binding.Template" style="display: none; width: 300px">
 				    <div class="smallListIconTextItem" >
 				        <img src="#" class="smallListIconTextItem-Image" data-win-bind="src: picture" />
-				        <div class="smallListIconTextItem-Detail">
+				        <div class="smallListIconTextItem-Detail" >
 				            <h4 class="win-h4" data-win-bind="textContent: title"></h4>
 				        </div>
 				    </div>
-				    <div><p data-win-bind="textContent: text"></p></div>
+				    <div>
+				    	<p data-win-bind="textContent: text"></p>
+				    	<img id="gluten" class="veg-icon" src="/RestaurantOrderingSystem/images/icon-glutenfree.png" data-win-bind="style.visibility: none myConverter">
+				    	<img id="veg" class="veg-icon" src="/RestaurantOrderingSystem/images/veg.png" data-win-bind="style.visibility: veg myConverter">
+				    </div>
 				    <div class="remove" ></div>
 				</div>
 				<div class="gridLayoutLeftHeaderTemplate" data-win-control="WinJS.Binding.Template">
@@ -102,7 +104,7 @@ freeTables.remove(toDelete);
 				        <img src="#" class="orderListItemText-Image" data-win-bind="src: picture" />
 				        <div class="orderListeItemText-Detail">
 				            <h4 class="win-h4" data-win-bind="textContent: title"></h4>
-				            <h6 class="win-h6" data-win-bind="textContent: text"></h6>
+				            <!-- <h6 class="win-h6" data-win-bind="textContent: text"></h6> -->
 				        </div>
 				    </div>
 				</div>
@@ -120,8 +122,8 @@ freeTables.remove(toDelete);
 				            layout: { type: WinJS.UI.ListLayout }
 				    }">
 				</div>
-				<button style="margin-left: 10%" class="placeO" onclick="placeOrder()">Place Order</button>
-				<button class="placeO" onclick="resetOrder()">Reset Order</button>
+				<button style="margin-left: 5%; width: 100px;" class="placeO" onclick="placeOrder()">Place Order</button>
+				<button style="width: 100px;" class="placeO" onclick="resetOrder()">Reset Order</button>
 			</div>
 	    </div> 
 	</div>

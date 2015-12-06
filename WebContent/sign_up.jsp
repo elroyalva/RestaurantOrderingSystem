@@ -11,7 +11,7 @@
 </head>
 <body background="background1.jpg">
 	<h1>Restaurant Sign Up</h1>
-	<form action="signup" enctype="multipart/form-data">
+	<form action="signup.do" enctype="multipart/form-data" method="post">
 	<h3>
 		<html:errors />
 		<br />
@@ -49,11 +49,11 @@
 			</tr>
 			<tr>
 				<td align="left"><b>Restaurant Image :</b></td>
-				<td align="left"><input type="file" name="image" /></td>
+				<td align="left"><input type="file" name="image"/></td>
 			</tr>
 			<tr>
 				<td align="left"><b>Restaurant Logo :</b></td>
-				<td align="left"><input type="file" name="logo" /></td>
+				<td align="left"><input type="file" name="logo"/></td>
 			</tr>
 			<tr>
 				<td align="left"><b>Restaurant Admin Username :</b></td>

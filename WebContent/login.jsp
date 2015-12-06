@@ -10,7 +10,7 @@
 </head>
 <body background="background1.jpg">
 	<h1>Restaurant Ordering System</h1>
-	<html:form action="login">
+	<html:form action="/login">
 	<!-- Validations and Error Messages -->
 		<html:errors />
 		<logic:messagesPresent message="true">
@@ -58,6 +58,6 @@
 	<br><br>
 	
 	<!-- Sign up link -->
-	<b><a href="sign_up.jsp">Sign up for a new restaurant here</a></b>
+	<b><a href="/RestaurantOrderingSystem/sign_up.jsp">Sign up for a new restaurant here</a></b>
 </body>
 </html>

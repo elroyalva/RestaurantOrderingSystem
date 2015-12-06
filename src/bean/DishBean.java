@@ -11,6 +11,33 @@ public class DishBean {
 	String dishType;
 	String image;
 	String glutenFree;
+	int dishCount;
+	int categoryId;
+	int menuId;
+
+	public int getMenuId() {
+		return menuId;
+	}
+
+	public void setMenuId(int menuId) {
+		this.menuId = menuId;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public int getDishCount() {
+		return dishCount;
+	}
+
+	public void setDishCount(int dishCount) {
+		this.dishCount = dishCount;
+	}
 
 	public String getImage() {
 		return image;

@@ -242,7 +242,7 @@ public class SignUpUtility {
 				return retVal;
 			}
 			con.close();
-			return 0;
+			return 1;
 		} catch (SQLException e) {
 			logger.info(e);
 		} finally {
@@ -260,7 +260,7 @@ public class SignUpUtility {
 				logger.info(e);
 			}
 		}
-		return 0;
+		return 1;
 	}
 
 	private void readProperties() {
